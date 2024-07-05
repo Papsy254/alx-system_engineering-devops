@@ -1,6 +1,8 @@
 #!/bin/bash
-# Read the last line of the file
-last_line=$(tail -n 1 iacta)
+# Read the last non-empty line of the file
+last_line=$(grep . iacta | tail -n 1)
 
-# Append the last line to the file
-echo "$last_line" >> iacta
+# Append the last non-empty line to the file
+if [ -n "$last_line" ]; then
+    echo "$last_line" >> iacta
+fi
